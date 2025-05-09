@@ -1,0 +1,94 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - ShoeVerse</title>
+  <link rel="stylesheet" href="styless.css">
+  <link rel="stylesheet" href="home.html" />
+  <link rel="stylesheet" href="services.html" />
+  <link rel="stylesheet" href="about.html" />
+  <link rel="stylesheet" href="contact.html" />
+  <link rel="stylesheet" href="cart.html" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    .contact-section {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #fffaf0;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .contact-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #aa7744;
+    }
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      background-color: #d8cfc4;
+      color: #333;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .contact-form button:hover {
+      background-color: #c6b8a8;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1 class="logo">Win's Collection</h1>
+    <nav class="nav">
+      <a href="home.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html" class="cart-link">
+        <i class="fas fa-shopping-cart"></i> Cart <span class="cart-count" id="cart-count">2</span>
+    </a>
+    </nav>
+  </header>
+  <main class="main-content">
+    <section class="contact-section">
+      <h2 class="contact-title">Get in Touch</h2>
+      <form class="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>&copy; 2025  2025 Win's Collection. All rights reserved.</p>
+  </footer>
+</body>
+</html>

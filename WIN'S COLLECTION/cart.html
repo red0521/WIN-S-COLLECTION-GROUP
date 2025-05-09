@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - Win's Collection</title>
+  <link rel="stylesheet" href="styless.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf6e3;
+      margin: 0;
+      padding: 0;
+    }
+    .header, .footer {
+      background-color: #aa7744;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+    .cart-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 1rem 0;
+    }
+    .cart-item img {
+      width: 80px;
+      border-radius: 5px;
+    }
+    .item-details {
+      flex: 1;
+      margin-left: 1rem;
+    }
+    .total {
+      text-align: right;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .checkout-btn {
+      display: block;
+      margin-left: auto;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #aa7744;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .checkout-btn:hover {
+      background-color: #8c5d2a;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>Win's Collection</h1>
+    <nav class="nav">
+      <a href="home.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html" class="cart-link"> 
+        <i class="fas fa-shopping-cart"></i> 
+        Cart <span class="cart-count" id="cart-count">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <div class="cart-container">
+    <h2>Your Cart</h2>
+    <!-- Dynamically filled with JS -->
+    <div id="cart-items"></div>
+    <div class="total" id="cart-total">Total: ₱0</div>
+    <button class="checkout-btn">Proceed to Checkout</button>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 Win's Collection. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cartItemsContainer = document.getElementById("cart-items");
+      const cartCountElement = document.getElementById("cart-count");
+      const cartTotalElement = document.getElementById("cart-total");
+
+      const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+      cartCountElement.textContent = cart.length;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+        cartTotalElement.textContent = "";
+      } else {
+        let total = 0;
+
+        cart.forEach(item => {
+          const itemPrice = parseFloat(item.price.replace(/[₱,]/g, ''));
+          total += itemPrice;
+
+          const card = document.createElement("div");
+          card.className = "cart-item";
+          card.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="item-details">
+              <h4>${item.name}</h4>
+              <p>₱${item.price}</p>
+            </div>
+            <p>Qty: 1</p>
+          `;
+          cartItemsContainer.appendChild(card);
+        });
+
+        cartTotalElement.textContent = "Total: ₱" + total.toLocaleString();
+      }
+    });
+  </script>
+</body>
+</html>
